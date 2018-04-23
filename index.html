@@ -31,7 +31,7 @@
       <a class="navbar-brand js-scroll-trigger" href="#page-top">
         <span class="d-block d-lg-none">RecCONN</span>
         <span class="d-none d-lg-block">
-          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
+         <!-- <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">-->
         </span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,22 +40,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <a class="nav-link js-scroll-trigger" href="#about" style="text-transform:none">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#introduction">Introduction</a>
+            <a class="nav-link js-scroll-trigger" href="#introduction" style="text-transform:none">Introduction</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#education">Base Model</a>
+            <a class="nav-link js-scroll-trigger" href="#education" style="text-transform:none">Base Model</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#skills">Model Changes</a>
+            <a class="nav-link js-scroll-trigger" href="#problem_statement" style="text-transform:none">Goal</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#interests">Network Changes</a>
+            <a class="nav-link js-scroll-trigger" href="#skills" style="text-transform:none">DeepConn+attr</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#awards">Results</a>
+            <a class="nav-link js-scroll-trigger" href="#interests" style="text-transform:none">RecCoNN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#awards" style="text-transform:none" >Results</a>
           </li>
         </ul>
       </div>
@@ -132,66 +135,141 @@ quality etc.)?</p>
         </div>
       </section>
 
+
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
         <div class="my-auto">
         <div class="container-fluid">
           	<div class="row">
-          		<h2 class="mb-5">Base Model</h2>
+          		<h2 class="mb-5">Base Model DeepConn</h2>
           	</div>
+          	 <div class="row">
+              <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+              <img class="img-fluid" src="img/DeepConn.jpg" alt="Image of DeepConn taken from the Paper">
+              <div class="caption"><b>Model taken from the below mentioned paper</b></div></img>
+              </div>
+              </div>
+          	<ul>
         	<div class="row">
-        		<p>The model consists of two parallel neural networks coupled
-in the last layer, one network for users Net1 and one
-network for items Net2.</p>
+        	<li> The Base model is taken from Joint Deep Modeling of Users and Items Using Reviews for Recommendation
+Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
         	</div>
         	<div class="row">
-        	<p> {User reviews, user attributes} and
-{item reviews, item attributes} are given to Net1 and Net2
-respectively as inputs, and corresponding rating is produced
-as the output. </p>
-			</div>
-			<div class="row">
-				<p>In the first layer, denoted as look-up layer,
-review text for users or items are represented as matrices
-of word embeddings to capture the semantic information in
-the review text.</p>
-			</div>
-			<div class="row">
-				<p>Next layers are the common layers used in
-CNN based models to discover multiple levels of features
-for users and items, including convolution layer, max pooling
-layer, and fully connected layer.</p>
-			</div>
-			<div class="row">
-				<p>Also, a top layer is
-added on the top of the two networks to let the hidden latent
-factors of user and item interact with each other. This
-layer calculates an objective function that measures the rating
-prediction error using the latent factors produced by
-Net1 and Net2.</p>
-			</div>
-         
+        	<li> A review based recommender system has been developed in this model which uses reviews collected from customers on an item to recommend new items. </li>
+        	</div>
+        	<div class="row">
+        	<li>For this model, they concatenate all the reviews by a user and then represent using word2vec embeddings for each word. Similarly, they find the embedding for all review of each item.</li>
+        	</div>
+        	<div class="row">
+        	<li> They train a CNN based model for each user and item separately and obtain user features and item features respectively using a fully connected layer after a CNN in each case. </li>
+        	</div>
+        	<div class="row">
+        	<li> Since, these features would not be in the same space, they then calculate parameters of the shared layer that connects the user and item features. </li>
+        	</div>
+        	</ul>
           </div>
         </div>
       </section>
 
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="problem_statement">
+        <div class="my-auto">
+        	<div class="container-fluid">
+        		<div class="row">
+          			<h2 class="mb-5">Goal</h2>
+          		</div>
+          		<div class="row">
+        			<li>DeepConn model uses the review text to recommend items to user but does not take other attributes
+        			into consideration</li>
+        		</div>
+           		<div class="row">
+        			<li> Context based information such as answers to questions like cuisine availability, parking availabilty is present in the Yelp Dataset but has not been taken into consideration</li>
+        		</div>
+        		<div class="row">
+        			<li> We in this project have  worked on  ways to append the context information either through input for the model already present or in the form of additional layers that can add information into the recommendation process by affecting the predicted rating. </li>
+        		</div>
+        		<div class="row">
+        			<li>We have developed two models</li>
+        		</div>
+        		<div class="row">
+        		<ul>
+        				<li><h3>DeepConn+Attr</h3></li>
+        			
+        		</div>
+        		<div class="row">
+        		<ul>
+        				<li><h3>RecCoNN</h3></li>
+        			
+        		</div>
+        		</ul>	
+        		</ul>
+        	</div>
+        </div>
+       </section>
+
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
         <div class="my-auto">
-          <h2 class="mb-5">Model Changes</h2>
-          <p>
-</p>
+        	<div class="container-fluid">
+          		<div class="row">
+          			<h2 class="mb-5">DeepConn+Attr</h2>
+          		</div>
+           		<div class="row">
+              		<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+              			<img class="img-fluid" src="img/architecture1.jpeg" alt="DeepConn+Attr.jpg">
+              				<div class="caption"><b>Fig: Architecture of DeepConn+attr</b>
+              				</div>
+              			</img>
+              		</div>
+              	</div>
+          		<div class="row">
+        			<li> Architecture of this model is same as that of DeepConn</li>
+        		</div>
+           		<div class="row">
+        			<li> Changes have been made in the way input is given to the model</li>
+        		</div>
+        		<div class="row">
+        			<li> Attribute information has been appended to the input and converted to word2vec while training</li>
+        		</div>
+        		<div class="row">
+        			<li>Ex :If a user has given a response “ABC … XYZ” to an item which has attributes {Parking : True, Delivery : True}, then the input into the model would be “ABC … XYZ Parking True Delivery True” for that user item pair respectively.</li>
+        		</div>
+        	</div>
         </div>
       </section>
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
         <div class="my-auto">
-          <h2 class="mb-5">Network Changes</h2>
+          <div class="container-fluid">
+           	<div class="row">
+          		<h2 class="mb-5">RecCoNN</h2>
+          	</div>
+           <div class="row">
+              		<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+              			<img class="img-fluid" src="img/architecture2.jpeg" alt="DeepConn++.jpg">
+              				<div class="caption"><b>Fig: Architecture of RecCoNN</b>
+              				</div>
+              			</img>
+              		</div>
+              	</div>
+              	</div>
           </div>
       </section>
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
         <div class="my-auto">
-          <h2 class="mb-5">Results</h2>
-          
+        <div class="container-fluid">
+          <div class="row"><h2 class="mb-5">Results</h2></div>
+          <div class="table-responsive">          
+  			   <table class="table">
+  			   <thead>
+  			   <tr>
+  			   <th>#</th>
+  			   <th>DeepConn</th>
+  			   <th>DeepConn+attr</th>
+  			   <th>RecCoNN</th>
+  			   </tr>
+  			   </thead>
+  			   </table>
+  		  </div>		   
+        </div>
         </div>
       </section>
 
