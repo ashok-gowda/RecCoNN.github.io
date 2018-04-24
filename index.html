@@ -171,7 +171,7 @@ quality etc.)?</p>
           	</div>
           	 <div class="row">
               <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
-              <img class="img-fluid" src="img/DeepCoNN.jpg" alt="Image of DeepCoNN taken from the Paper">
+              <img class="img-fluid" src="img/DeepConn.jpg" alt="Image of DeepCoNN taken from the Paper">
               <div class="caption"><b>Model taken from the below mentioned paper</b></div></img>
               </div>
               </div>
@@ -296,11 +296,11 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
             <div class="row">
             <li> At last, we conducted experiments by sampling the Yelp data with respect to the US states and investigated the impact of the number of reviews. We have used sampling because of the lack of computational resources.</li>
             </div>
-
+            </ul>
             <div class="row">
-            <h3 class="mb-5">Discussions</h3>
+            <h4 class="mb-5">Discussions</h4>
             </div>
-
+            <ul>
             <div class="row">
             <li>Experimental results showed that, RecCoNN obtains more reduction in MSE than DeepCoNN.</li>
             </div>
@@ -311,6 +311,34 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
             <div class="row">
             <li>Each US state data trained separately provides 30% improvement in RMSE compared to full data. This proves the impact of localization of the review data and we plan to incorporate location of the restaurants in our training.</li>
             </div>
+            </ul>
+
+            <div class="row">
+            <h4 class="mb-5"> Attacks</h4>
+            </div>
+            <div class="row">
+            Attacks can happen due to bots creating new accounts and writing bad reviews (nuke attacks) or good reviews (push attacks) for targeted products.
+            </div>
+            <ul>
+            <div class="row">
+            <li>Text analysis : Suppose bots try to manipulate by duplicating specific type of review, text analysis can be done and similarity can be found out. Confidence of each review can be established. </li>
+            </div>
+
+            <div class="row">
+            <li>Attributes such as usefulness of a review can be estimated using feedback by other users</li>
+            </div>
+            </ul>
+
+            <div class="row">
+            Bots create reviews which are similar to a particular user profile where the user profile is designed similar to specific group of people like (Chinese restaurant visitor, Indian food lover etc) and influence that group of recommendations.
+            </div>
+            <ul>
+            <div class="row">
+            <li>Using Network Analysis , we can only suggest people who have higher weights in the network embedding  which bots have difficulty in achieving.
+            </li>
+            </div>
+            </ul>
+
      		</div>
           </div>
       </section>
