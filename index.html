@@ -57,11 +57,11 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#interests" style="text-transform:none">RecCoNN</a>
           </li>
-           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#network_analysis" style="text-transform:none" >Network Analysis</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#awards" style="text-transform:none" >Results</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#network_embeddings" style="text-transform:none" >Network Embeddings</a>
           </li>
         </ul>
       </div>
@@ -99,6 +99,7 @@
          	  The basic idea of these techniques is that people who share similar preferences in the past tend to have similar choices in the future.<br/>
          	  But Collaborative Filtering techniques have a sparsity problem in that the number of items rated by users is insignificant to the total number of items.<br/>
          	  <b> We aim to reduce the sparsity problem and improve the quality of recommendations</b><br/></p>
+         	  <p> We are using Yelp Dataset in this scenario to showcase our methods against methods like matrix factorization as Yelp dataset is very sparse and traditional methods like matrix factorization involves lots of computation when it comes to sparse dataset</p>
             </div>
           </div>
           </div>
@@ -160,13 +161,13 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
         	<li> A review based recommender system has been developed in this model which uses reviews collected from customers on an item to recommend new items. </li>
         	</div>
         	<div class="row">
-        	<li>For this model, they concatenate all the reviews by a user and then represent using word2vec embeddings for each word. Similarly, they find the embedding for all review of each item.</li>
+        	<li>For this model, they concatenate all the reviews by a user and then represent using word2vec embeddings for each word. Similarly, they find the embedding for all reviews of each item.</li>
         	</div>
         	<div class="row">
         	<li> They train a CNN based model for each user and item separately and obtain user features and item features respectively using a fully connected layer after a CNN in each case. </li>
         	</div>
         	<div class="row">
-        	<li> Since, these features would not be in the same space, they then calculate parameters of the shared layer that connects the user and item features. </li>
+        	<li> Since, these features would not be in the same space, they then calculate parameters of the shared layer that connect the user and item features. </li>
         	</div>
         	</ul>
           </div>
@@ -180,7 +181,7 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
           			<h2 class="mb-5">Goal</h2>
           		</div>
           		<div class="row">
-        			<li>DeepConn model uses the review text to recommend items to user but does not take other attributes
+        			<li>DeepConn model uses the review text to recommend items to users but does not take other attributes
         			into consideration</li>
         		</div>
            		<div class="row">
@@ -256,22 +257,137 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
           </div>
       </section>
 
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="network_analysis">
+       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
         <div class="my-auto">
-          <div class="container-fluid">
-           	<div class="row">
-          		<h2 class="mb-5">Network Analysis</h2>
-          	</div>
+        <div class="container-fluid">
+          <div class="row"><h2 class="mb-5">Results</h2></div>
+          <div class="table-responsive">          
+  			   <table class="table">
+  			   <thead>
+  			   <tr>
+  			   <th>#</th>
+  			   <th>DeepConn</th>
+  			   <th>DeepConn+attr</th>
+  			   <th>RecCoNN</th>
+  			   </tr>
+  			   </thead>
+  			   </table>
+  		  </div>		   
+        </div>
+        </div>
+      </section>
+
+
+
+
+       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="network_embeddings">
+        <div class="my-auto">
+        	<div class="container-fluid">
+        		<div class="row">
+        			<h2 class="mb-5">Need for Network Embedding</h2>
+        		</div>
+        		<div class="row">
+        			<p>Traditional recommendation methods (e.g., matrix factorization) mainly aim to learn an effective prediction function for characterizing user-item interaction records (e.g., user-item rating matrix). With the rapid development of web services, various kinds of auxiliary data (side information) become available in recommender systems. Although auxiliary data is likely to contain useful information for recommendation, it is difficult to model and utilize these heterogeneous and complex information in recommender systems. Furthermore, it is more challenging to develop a relatively general approach to model these varying data in different systems or platforms.</p>
+        		</div>
+        		<div class="row">
+        			<h2 class="mb-5">Heterogeneous Information Network Embedding</h2>
+        		</div>
+        		<div class="row">
+        			<p>As a promising direction, heterogeneous information network (HIN), consisting of multiple types of nodes and links, has been proposed as a powerful information modeling method. Due to its flexibility in modeling data heterogeneity, HIN has been adopted in recommender systems to characterize rich auxiliary data. During literature review, we observed multiple movie recommendation papers characterized by HINs. We can see that the HIN contains multiple types of entities connected by different types of relations. Under the HIN based representation, the recommendation problem can be considered as a similarity search task over the HIN.</p>
+        		</div>
+        		 <div class="row">
+              		<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+              			<img class="img-fluid" src="img/HIN.png" alt="HIN.jpg">
+              				<div class="caption"><b>Fig: Heterogeneous Information Network Embedding</b>
+              				</div>
+              			</img>
+              		</div>
+              	</div>
+              	<div class="row">
+              	<p>HIN is a more general model which contains more comprehensive relations among objects and much richer semantic information. It is challenging to develop effective methods for HIN based recommendation in both extraction and exploitation of the information from HINs. Most of HIN based recommendation methods rely on path based similarity, which cannot fully mine latent structure features of users and items.</p>
+              	</div>
+
            <div class="row">
-              	<p> Yelp contains a lot of data about user's friends connections. We analyzed and created
-              	    Heterogeneous Information Networks(HIN)
-              	    </p>	
-             </div>
+              	<p> Due to lack of resources, we have restricted our work to the basics of network embedding. We studied the structure and topology of the Yelp social network. We found evidence of a small world network. A small subset of users act as hubs and the main connected component has a diameter of 6. Lastly, we have generated network graph and did some visualizations.
+              	</p>
+             </div> 	
+
+<div class="row">             
+Based on visualizations we observed that Yelp essentially has two classes of users:
+</div>
+<ul>
+<div class="row"> 
+  <li><b>Class 1</b> - uses Yelp purely to look for food/entertainment but do not engage in the social networking much.</li>
+ </div>
+ <div class="row"> 
+   <li><b>Class 2</b> - exhibits the power law, has many friends, and treats yelp as a social network so mainly relying on their network of friends to recommend them Restaurants, along with other interactions.
+   </li>
+   </div>
+ </ul>
+ <div class="row"><h2 class="mb-5">Observations</h2></div>
+ <div class="table-responsive">          
+  			   <table class="table">
+  			   <thead>
+  			   <tr>
+  			   <th>#</th>
+  			   <th>Number of Nodes</th>
+  			   <th>Number of Edges</th>
+  			   <th>Average Degree</th>
+  			   <th>Diameter</th>
+  			   </tr>
+  			   </thead>
+  			   <tr>
+  			   <td>Top 10 Users</td>
+  			   <td>5859</td>
+  			   <td>11057</td>
+  			   <td>3.7744</td>
+  			   <td>4</td>
+  			   </tr>
+  			   <tr>
+  			   <td>Top 100 Users</td>
+  			   <td>10928</td>
+  			   <td>39759</td>
+  			   <td>7.2765</td>
+  			   <td>5</td>
+  			   </tr>
+  			   <tr>
+  			   <td>Top 1000 Users</td>
+  			   <td>17104</td>
+  			   <td>94994</td>
+  			   <td>11.1078</td>
+  			   <td>6</td>
+  			   </tr>
+  			   <tr>
+  			   <td>All Users Graph</td>
+  			   <td>30255</td>
+  			   <td>151516</td>
+  			   <td>10.0159</td>
+  			   <td>Not available Disconneted Components</td>
+  			   </tr>
+  			   </table>
+  		  </div>	
+
              <div class="row">
               		<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
               			<img class="img-fluid" src="img/top-10-users.png" alt="Top 10 Users">
               				<div class="caption"><b><center>Top 10 Users</center></b>
+              				</div>
+              			</img>
+              		</div>
+              		<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+              		</div>
+              		<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+              			<img class="img-fluid" src="img/top-20-users.png" alt="Top 20 Users">
+              				<div class="caption"><b><center>Top 20 Users</center></b>
+              				</div>
+              			</img>
+              		</div>
+              	</div>
+
+              	 <div class="row">
+              		<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+              			<img class="img-fluid" src="img/top-50-users.png" alt="Top 50 Users">
+              				<div class="caption"><b><center>Top 50 Users</center></b>
               				</div>
               			</img>
               		</div>
@@ -302,30 +418,16 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
               		</div>
               	</div>
 
+              	<div class="row">
+              		<h2 class="mb-5">Future Work</h2>
+              	</div>
+              	<div class="row">
+              	<p>To embed HINs, we would like to use a random walk strategy to generate meaningful node sequences for network embedding. We characterize nodes from HINs with low-dimensional vectors, i.e., embeddings. Instead of relying on explicit path connection, we would like to encode useful information from HINs with latent vectors. The learned node embeddings are first transformed by a set of fusion functions and once we obtain the representations for user u and item i, we would like to integrate them to our RecCoNN model.</p>
+              	</div>
+
              </div>
           </div>
       </section>
-
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
-        <div class="my-auto">
-        <div class="container-fluid">
-          <div class="row"><h2 class="mb-5">Results</h2></div>
-          <div class="table-responsive">          
-  			   <table class="table">
-  			   <thead>
-  			   <tr>
-  			   <th>#</th>
-  			   <th>DeepConn</th>
-  			   <th>DeepConn+attr</th>
-  			   <th>RecCoNN</th>
-  			   </tr>
-  			   </thead>
-  			   </table>
-  		  </div>		   
-        </div>
-        </div>
-      </section>
-
     </div>
 
     <!-- Bootstrap core JavaScript -->
