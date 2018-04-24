@@ -63,6 +63,12 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#network_embeddings" style="text-transform:none" >Network Embeddings</a>
           </li>
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#future_work" style="text-transform:none" >Future Work</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#references" style="text-transform:none" >References</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -101,15 +107,26 @@
               <p>Many of the world's recommender systems are based on collaborative filtering techniques.<br/>
          	  The basic idea of these techniques is that people who share similar preferences in the past tend to have similar choices in the future.<br/>
          	  But Collaborative Filtering techniques have a sparsity problem in that the number of items rated by users is insignificant to the total number of items.<br/>
-         	  <b> We aim to reduce the sparsity problem and improve the quality of recommendations</b><br/></p>
-         	  <p> We are using Yelp Dataset in this scenario to showcase our methods against methods like matrix factorization as Yelp dataset is very sparse and traditional methods like matrix factorization involves lots of computation when it comes to sparse dataset</p>
+         	   We aim to reduce the sparsity problem and improve the quality of recommendations<br/></p>
+         	  <p> We are using Yelp Dataset in this scenario to showcase our methods against methods like matrix factorization as Yelp dataset is very sparse and traditional methods like matrix factorization involves lots of computation when it comes to sparse dataset
+
+         	  The current techniques in recommender systems use collaborative filtering, content based filtering or hybrid methods on ratings explicitly given by the users to each item. But such systems are not robust to problems due to sparsity in the ratings data.<br/> It has been shown that reviews written by users can reveal some information on the customers’ buying and rating behavior, and also reviews written for items may contain information on their features and properties.<br/> So we believe that a large amount of information exists in reviews written by users. This source of information has been ignored by most of the current recommender systems while it can potentially alleviate the sparsity problem and improve the quality of recommendations.<br/> In Jan 2017, Lei et. al. have proposed a deep model (DeepCoNN) to learn item properties and user behaviors jointly from review text. But we noticed that they have completely neglected other user/item profile specific attribute information. 
+
+
+
+
+
+
+
+
+         	  </p>
             </div>
           </div>
           </div>
           <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
              <div class="row">
-              <h3 class="mb-0">HOW ??</h3>
+          
               </div>
               <div class="row">
               <p>Consider the Yelp Dataset<br/></p>
@@ -262,7 +279,49 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
               			</img>
               		</div>
               	</div>
-              	</div>
+            <ul> 	
+            <div class="row">
+            <li>In this work, we have proposed and evaluated two recommender systems, first, we have used the same DeepCoNN model but appended user and item attributes into the reviews of each user or item to train the model and the second model (RecCoNN) which uses the additional attribute information (user profile specific) and trains two parallel neural networks coupled in the last layers.</li>
+            </div>
+            <div class="row">
+            <li>One of the networks focuses on learning user behaviors exploiting reviews written by the user, considering additional user profile features, and the other network learns item properties from the reviews written for the item.</li>
+            </div>
+
+            <div class="row">
+            <li>The following attributes are used in RecCoNN: Alcohol, OutdoorSeating, RestaurantsDelivery, RestaurantsTakeOut, BusinessParking/Valet and the cuisine data for profiling users. </li>
+            </div>
+
+            <div class="row">
+            <li> Later, a shared layer is introduced on the top to couple these two networks together. The shared layer enables latent factors learned for users and items to interact with each other to map them to a common feature space.</li>
+            </div>
+
+            <div class="row">
+            <li>Similar to MF techniques, user and item latent factors can effectively interact with each other to predict the corresponding rating. Experimental results demonstrate that RecCoNN outperforms our baseline system DeepCoNN on Yelp dataset.</li>
+            </div>
+
+            <div class="row">
+            <li>We used Word2vec pretrained on GoogleNews(300 d) and also Glove embeddings(100 d). Furthermore, we found that word embedding could be helpful to capture semantic meaning of review text by comparing it with a variant of RecCoNN bag-of-words or TF-IDF representations for reviews. </li>
+            </div>
+
+            <div class="row">
+            <li> At last, we conducted experiments by sampling the Yelp data with respect to the US states and investigated the impact of the number of reviews. We have used sampling because of the lack of computational resources.</li>
+            </div>
+
+            <div class="row">
+            <h3 class="mb-5">Discussions</h3>
+            </div>
+
+            <div class="row">
+            <li>Experimental results showed that, RecCoNN obtains more reduction in MSE than DeepCoNN.</li>
+            </div>
+
+            <div class="row">
+            <li>It validates that RecCoNN can effectively alleviate the sparsity problem and also outperform DeepCoNN with the help of additional Attribute information.</li>
+            </div>
+            <div class="row">
+            <li>Each US state data trained separately provides 30% improvement in RMSE compared to full data. This proves the impact of localization of the review data and we plan to incorporate location of the restaurants in our training.</li>
+            </div>
+     		</div>
           </div>
       </section>
 
@@ -272,16 +331,72 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
           <div class="row"><h2 class="mb-5">Results</h2></div>
           <div class="table-responsive">          
   			   <table class="table">
+  			   <caption><center><b>Mean Absolute Error (MAE)</b></center></caption>
   			   <thead>
   			   <tr>
   			   <th>#</th>
-  			   <th>DeepConn</th>
+  			   <th>Baseline(DeepConn)</th>
   			   <th>DeepConn+attr</th>
   			   <th>RecCoNN</th>
   			   </tr>
   			   </thead>
+  			   <tr>
+  			   <td>Arizona</td>
+  			   <td><b>0.9374</b></td>
+  			   <td>0.9917</td>
+  			   <td>0.9502</td>
+  			   </tr>
+  			   <tr>
+  			   <td>North Carolina</td>
+  			   <td>0.8495</td>
+  			   <td>0.8706</td>
+  			   <td><b>0.8475</b></td>
+  			   </tr>
+  			   <tr>
+  			   <td>Pennsylvania</td>
+  			   <td>0.8252</td>
+  			   <td>0.8263</td>
+  			   <td><b>0.8232</b></td>
+  			   </tr>
+  			   
   			   </table>
-  		  </div>		   
+  		  </div>		 
+
+
+  		  <div class="table-responsive">          
+  			   <table class="table">
+  			   <caption><center><b>Root Mean Square Error (RMSE)</b></center></caption>
+  			   <thead>
+  			   <tr>
+  			   <th>#</th>
+  			   <th>Baseline(DeepConn)</th>
+  			   <th>DeepConn+attr</th>
+  			   <th>RecCoNN</th>
+  			   </tr>
+  			   </thead>
+  			   <tr>
+  			   <td>Arizona</td>
+  			   <td>1.1831</td>
+  			   <td>1.204</td>
+  			   <td><b>1.181</b></td>
+  			   </tr>
+  			   <tr>
+  			   <td>North Carolina</td>
+  			   <td><b>1.0872</b></td>
+  			   <td>1.12</td>
+  			   <td>1.0929</td>
+  			   </tr>
+  			   <tr>
+  			   <td>Pennsylvania</td>
+  			   <td>1.0625</td>
+  			   <td>1.0578</td>
+  			   <td><b>1.0502</b></td>
+  			   </tr>
+  			   
+  			   </table>
+  		  </div>
+
+
         </div>
         </div>
       </section>
@@ -427,17 +542,80 @@ Based on visualizations we observed that Yelp essentially has two classes of use
               		</div>
               	</div>
 
-              	<div class="row">
-              		<h2 class="mb-5">Future Work</h2>
-              	</div>
-              	<div class="row">
-              	<p>To embed HINs, we would like to use a random walk strategy to generate meaningful node sequences for network embedding. We characterize nodes from HINs with low-dimensional vectors, i.e., embeddings. Instead of relying on explicit path connection, we would like to encode useful information from HINs with latent vectors. The learned node embeddings are first transformed by a set of fusion functions and once we obtain the representations for user u and item i, we would like to integrate them to our RecCoNN model.</p>
-              	</div>
-
+              	
              </div>
           </div>
       </section>
     </div>
+
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="future_work">
+        <div class="my-auto">
+        	<div class="container-fluid">
+    			<div class="row">
+              		<h2 class="mb-5">Future Work</h2>
+    			</div>
+              	<div class="row">
+              		<p>To embed HINs, we would like to use a random walk strategy to generate meaningful node sequences for network embedding. We characterize nodes from HINs with low-dimensional vectors, i.e., embeddings. Instead of relying on explicit path connection, we would like to encode useful information from HINs with latent vectors. The learned node embeddings are first transformed by a set of fusion functions and once we obtain the representations for user u and item i, we would like to integrate them to our RecCoNN model.</p>
+              	</div>
+            </div>
+        </div>
+    </section>
+
+
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="references">
+        <div class="my-auto">
+        	<div class="container-fluid">
+    			<div class="row">
+              		<h2 class="mb-5">References</h2>
+    			</div>
+    			<ul>
+              	<div class="row">
+              		<li>L. Zheng, V. Noroozi, and P. S. Yu. Joint deep modeling of
+users and items using reviews for recommendation. CoRR,
+abs/1701.04783, 2017.</li>
+              	</div>
+              	<div class="row">
+              	<li>
+              	Chuan Shi, Member, IEEE, Binbin Hu, Wayne Xin Zhao Member, IEEE
+and Philip S. Yu, Fellow, IEEE
+Heterogeneous Information Network Embedding for Recommendation 
+              	</li>
+              	</div>
+              	<div class="row">
+              		<li> H. Wang, Y. Lu, and C. Zhai. Latent aspect rating analysis
+on review text data: A rating regression approach. In Proceedings
+of the 16th ACM SIGKDD International Conference
+on Knowledge Discovery and Data Mining, KDD ’10, pages
+783–792, New York, NY, USA, 2010. ACM</li>
+              	</div>
+              	<div class="row">
+              		<li>C. Zhang, L. Yu, Y. Wang, C. Shah, and X. Zhang. Collaborative
+User Network Embedding for Social Recommender Systems,
+pages 381–389.</li>
+              	</div>
+              	<div class="row">
+              		<li>J. McAuley and J. Leskovec. Hidden factors and hidden topics:
+Understanding rating dimensions with review text. In
+Proceedings of the 7th ACM Conference on Recommender
+Systems, RecSys ’13, pages 165–172, New York, NY, USA,
+2013. ACM.</li>
+              	</div>
+              	<div class="row">
+              		<li> G. Ling, M. R. Lyu, and I. King. Ratings meet reviews, a
+combined approach to recommend. In RecSys, 2014.</li>
+              	</div>
+              	<div class="row">
+              		<li>Y. Koren, R. Bell, and C. Volinsky. Matrix factorization techniques
+for recommender systems. Computer, 42(8):30–37,
+Aug. 2009.</li>
+              	</div>
+              	</ul>
+            </div>
+        </div>
+    </section>
+
+
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
