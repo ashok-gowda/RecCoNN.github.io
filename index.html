@@ -52,7 +52,7 @@
             <a class="nav-link js-scroll-trigger" href="#problem_statement" style="text-transform:none">Goal</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#skills" style="text-transform:none">DeepConn+attr</a>
+            <a class="nav-link js-scroll-trigger" href="#skills" style="text-transform:none">DeepCoNN+attr</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#interests" style="text-transform:none">RecCoNN</a>
@@ -167,11 +167,11 @@ quality etc.)?</p>
           		<h2 class="mb-5">RELATED WORK</h2>
           	</div>
           	<div class="row">
-          		<h3 class="mb-5">DEEPCONN</h3>
+          		<h3 class="mb-5">DeepCoNN</h3>
           	</div>
           	 <div class="row">
               <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
-              <img class="img-fluid" src="img/DeepConn.jpg" alt="Image of DeepConn taken from the Paper">
+              <img class="img-fluid" src="img/DeepCoNN.jpg" alt="Image of DeepCoNN taken from the Paper">
               <div class="caption"><b>Model taken from the below mentioned paper</b></div></img>
               </div>
               </div>
@@ -207,7 +207,7 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
           			<h2 class="mb-5">Goal</h2>
           		</div>
           		<div class="row">
-        			<li>DeepConn model uses the review text to recommend items to users but does not take other attributes
+        			<li>DeepCoNN model uses the review text to recommend items to users but does not take other attributes
         			into consideration</li>
         		</div>
            		<div class="row">
@@ -217,19 +217,9 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
         			<li> We in this project have  worked on  ways to append the context information either through input for the model already present or in the form of additional layers that can add information into the recommendation process by affecting the predicted rating. </li>
         		</div>
         		<div class="row">
-        			<li>We have developed two models</li>
+        			<li>We have developed two models DeepCoNN+attr and RecCoNN</li>
         		</div>
-        		<div class="row">
-        		<ul>
-        				<li><h3>DeepConn+Attr</h3></li>
-        			
-        		</div>
-        		<div class="row">
-        		<ul>
-        				<li><h3>RecCoNN</h3></li>
-        			
-        		</div>
-        		</ul>	
+        		
         		</ul>
         	</div>
         </div>
@@ -239,18 +229,18 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
         <div class="my-auto">
         	<div class="container-fluid">
           		<div class="row">
-          			<h2 class="mb-5">DeepConn+Attr</h2>
+          			<h2 class="mb-5">DeepCoNN+Attr</h2>
           		</div>
            		<div class="row">
               		<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
-              			<img class="img-fluid" src="img/architecture1.jpeg" alt="DeepConn+Attr.jpg">
-              				<div class="caption"><b>Fig: Architecture of DeepConn+attr</b>
+              			<img class="img-fluid" src="img/architecture1.jpeg" alt="DeepCoNN+Attr.jpg">
+              				<div class="caption"><b>Fig: Architecture of DeepCoNN+attr</b>
               				</div>
               			</img>
               		</div>
               	</div>
           		<div class="row">
-        			<li> Architecture of this model is same as that of DeepConn</li>
+        			<li> Architecture of this model is same as that of DeepCoNN</li>
         		</div>
            		<div class="row">
         			<li> Changes have been made in the way input is given to the model</li>
@@ -273,7 +263,7 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
           	</div>
            <div class="row">
               		<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
-              			<img class="img-fluid" src="img/architecture2.jpeg" alt="DeepConn++.jpg">
+              			<img class="img-fluid" src="img/architecture2.jpeg" alt="DeepCoNN++.jpg">
               				<div class="caption"><b>Fig: Architecture of RecCoNN</b>
               				</div>
               			</img>
@@ -331,12 +321,12 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
           <div class="row"><h2 class="mb-5">Results</h2></div>
           <div class="table-responsive">          
   			   <table class="table">
-  			   <caption><center><b>Mean Absolute Error (MAE)</b></center></caption>
+  			   <caption style="caption-side: top"><center><b>Mean Absolute Error (MAE)</b></center></caption>
   			   <thead>
   			   <tr>
   			   <th>#</th>
-  			   <th>Baseline(DeepConn)</th>
-  			   <th>DeepConn+attr</th>
+  			   <th>Baseline(DeepCoNN)</th>
+  			   <th>DeepCoNN+attr</th>
   			   <th>RecCoNN</th>
   			   </tr>
   			   </thead>
@@ -365,12 +355,12 @@ Lei Zheng, Vahid Noroozi, Philip S. Yu</li>
 
   		  <div class="table-responsive">          
   			   <table class="table">
-  			   <caption><center><b>Root Mean Square Error (RMSE)</b></center></caption>
+  			   <caption style="caption-side: top"><center><b>Root Mean Square Error (RMSE)</b></center></caption>
   			   <thead>
   			   <tr>
   			   <th>#</th>
-  			   <th>Baseline(DeepConn)</th>
-  			   <th>DeepConn+attr</th>
+  			   <th>Baseline(DeepCoNN)</th>
+  			   <th>DeepCoNN+attr</th>
   			   <th>RecCoNN</th>
   			   </tr>
   			   </thead>
